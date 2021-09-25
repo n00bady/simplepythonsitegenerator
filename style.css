@@ -44,7 +44,51 @@ footer {
     max-width: 80ch;
 }
 .content .container ul {
-    padding-left: 21px;
+    margin-left: 18px;
+    padding: inherit;
+    color: #666600;
+}
+.content .container ol {
+    margin-left: 18px;
+    padding: inherit;
+    color: #666600;
+}
+.content .container code {
+    display: inline-block;
+    background: #191919;
+    font-family: monospace;
+}
+.content .container pre code {
+    display: block;
+    max-width: 70%;
+    min-width: 100px;
+    background: #191919;
+    scrollbar-color: yellow none;
+    padding: 0;
+    margin: 3px 10px 3px 20px;
+    font-family: monospace;
+}
+.content .container blockquote {
+    display: block;
+    max-width: 70%;
+    min-width: 100px;
+    background: #191919;
+    scrollbar-color: yellow none;
+    padding: 0;
+    margin: 3px 10px 3px 20px;
+    font-style: italic;
+}
+.content .container table, {
+    border: thin dashed white;
+    max-width: 70%;
+    min-width 100px;
+}
+.content .container th {
+    border-bottom: thin solid white;
+    text-align: center;
+}
+.content .container tr:nth-child(even) {
+    background-color: #191919;
 }
 .content .love {
     background-image: url(./img/letsalllovelain.gif);
