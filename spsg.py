@@ -1,11 +1,13 @@
 # A very simple script to generate a blog html page using jinja2
 import jinja2
+import markdown
 
 outfile = 'blog.html'
+# TODO: Add taking input/output files as cli arguments
+with open('test.md', 'r') as md:
+    m = markdown.Markdown(extensions=['markdown.extensions.meta'])
+    html = m.convert(md.read())
 
-titles = ['1st title', '2nd title', '3rd title']
-texts = ['This is an exaple of a 1st post.', 'And this is a second post.', 'Also a 3rd one to fullfils the rule of 3s.']
+content = jinja2.Environment(loader=jinja2.FileSystemLoader('./')).get_template('template.html').render(body=html, meta=m.Meta)
 
-subs = jinja2.Environment(loader=jinja2.FileSystemLoader('./')).get_template('template.html').render(titles=titles, text=texts)
-
-with open(outfile, 'w') as f: f.write(subs)
+with open(outfile, 'w') as f: f.write(content)
