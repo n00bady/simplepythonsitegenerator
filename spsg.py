@@ -1,9 +1,10 @@
-# A very simple script to generate a blog html page using jinja2
+# A very simple script to generate a blog html page using jinja2.
 import jinja2
 import markdown
 
 outfile = 'blog.html'
-# TODO: Add taking input/output files as cli arguments
+# TODO: Add taking input/output files as cli arguments.
+# TODO: Also it should generate an index page with all the posts and links to them.
 with open('test.md', 'r') as md:
     m = markdown.Markdown(extensions=['markdown.extensions.meta', 'markdown.extensions.extra'])
     html = m.convert(md.read())
