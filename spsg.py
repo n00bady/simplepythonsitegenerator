@@ -2,27 +2,27 @@
 import jinja2
 import markdown
 import argparse
+import os
 
 # Parse arguments with arparse's help
 parser = argparse.ArgumentParser()
-parser.add_argument("infile", help="The markdown file.", type=str)
 parser.add_argument("template", help="The template file.", type=str)
-parser.add_argument("outfile", help="The name of the output file.", nargs='?', type=str)
 args = parser.parse_args()
 
-infile = args.infile
 template = args.template
-if args.outfile == None:
-    outfile = 'out.html'
-else:
-    outfile = args.outfile
 
-with open(infile, 'r') as md:
-    m = markdown.Markdown(extensions=['markdown.extensions.meta', 'markdown.extensions.extra'])
-    html = m.convert(md.read())
+inpath = './_posts/'
+outpath = './blog/'
 
-content = jinja2.Environment(loader=jinja2.FileSystemLoader('./')).get_template(template).render(body=html, meta=m.Meta)
-
-with open(outfile, 'w') as f: f.write(content)
+for file in os.listdir(inpath):
+    print("Processing:", file)
+    # TODO: Make it check if they are indeed markdown files
+    md = os.path.join(inpath, file)
+    with open(md, 'r') as f:
+        m = markdown.Markdown(extensions=['markdown.extensions.meta', 'markdown.extensions.extra'])
+        html = m.convert(f.read())
+    content = jinja2.Environment(loader=jinja2.FileSystemLoader('./')).get_template(template).render(body=html, meta=m.Meta)
+    outfile = os.path.join(outpath, os.path.splitext(file)[0]+'.html')
+    with open(outfile, 'w') as o: o.write(content)
 
 # TODO: Also it should generate an index page with all the posts and links to them.
