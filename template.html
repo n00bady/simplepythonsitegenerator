@@ -25,12 +25,8 @@
             </div>
             <!--navigation ends here-->
             <div class="container">
-                {% for t in titles %}
-                <h2> {{t}} </h2>
-                    {% for v in mydata%}
-                    <p> {{v}} </p>
-                    {% endfor %}
-                {% endfor %}
+                <h2>{% for title in meta.title %}{{ title }} {% endfor %}</h2>
+                {{ body }}
             </div>
         </div>
     </body>
