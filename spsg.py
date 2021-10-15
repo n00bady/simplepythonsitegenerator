@@ -21,7 +21,7 @@ outpath = './blog/'
 
 all_posts = []
 
-for file in os.listdir(inpath):
+for file in sorted(os.listdir(inpath), reverse=True):
     print("Processing:", file)
     md = os.path.join(inpath, file)
     
@@ -53,4 +53,3 @@ with open('./blog/index.html', 'w') as i: i.write(index_content)
 
 print("\n---FINISHED!---")
 
-# TODO: Find a way to sort the mess that is all_posts by date in descending order.
