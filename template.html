@@ -25,7 +25,9 @@
             </div>
             <!--navigation ends here-->
             <div class="container">
-                <h2>{% for title in meta.title %}{{ title }} {% endfor %}</h2>
+                <h2>{{ meta.title[0] }}</h2>
+                <p id="postdate">{{ meta.date[0] }}</p>
+                <br/>
                 {{ body }}
             </div>
         </div>
